@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var wordAdapter:WordAdapter
     private lateinit var recyclerView: RecyclerView
     private var wordList = mutableListOf<Word>()
-    private lateinit var textView: TextView
+    private lateinit var editText: EditText
     private lateinit var translateButton: Button
 
     val translations = mapOf(
@@ -38,11 +38,11 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = wordAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        textView = findViewById(R.id.textview)
+        editText = findViewById(R.id.edittext)
         translateButton = findViewById(R.id.button)
 
         translateButton.setOnClickListener {
-            val original = textView.text.toString()
+            val original = editText.text.toString()
             val translation = translateWord(original)
             val word = Word(original, translation)
             wordList.add(word)
